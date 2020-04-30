@@ -22,7 +22,7 @@ class admin extends CI_Controller{
     }
     
     public function update(){
-        $id = $this->input->post('id_admin');
+        $id_admin = $this->input->post('id_admin');
         $nama_admin = $this->input->post('nama_admin');
         $user_admin = $this->input->post('user_admin');
         $password = $this->input->post('password');
