@@ -12,7 +12,8 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Tabel Data Admin</h6>
-    <button class="btn btn-primary btn-sm btninsert" data-toggle="modal" data-target="#insertModal"><a href="admin/tambah"></a>+ Input Data</button>
+    <br>
+    <a href="admin/tambah" class="btn btn btn-success btn-sm editbtn"><span class="text">Tambah</span></a>
     </div>
     <div class="card-body">
     <div class="table-responsive">

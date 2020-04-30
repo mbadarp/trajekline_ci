@@ -44,5 +44,28 @@ class admin extends CI_Controller{
         $this->admin_model->update_data($where,$data,'login_admin');
         redirect('admin');
     }
+    public function input(){
+        $nama_admin = $this->input->post('nama_admin');
+        $user_admin = $this->input->post('user_admin');
+        $password = $this->input->post('password');
+        $email = $this->input->post('email');
+        $level = $this->input->post('level');
+
+        $data = array(
+            'nama_admin' => $nama_admin,
+            'user_admin' => $user_admin,
+            'password' => $password,
+            'email' => $email,
+            'level' => $level
+        );
+
+        $this->admin_model->input_data($data, 'login_admin');
+        redirect('admin/index');
+    }
+    public function tambah(){
+        //menampilkan tambah_mahasiswa
+        $this->template->views('crud/tambah_admin');
+    }
+
 }
 ?>
