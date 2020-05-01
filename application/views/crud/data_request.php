@@ -83,7 +83,7 @@
         </table>
     </div>
   
-    <!-- <a href="admin/tambah" class="btn btn-succes btn-icon-split"><span class="text">Tambah</span></a> -->
+   
     </div>
     </div>
 </div>

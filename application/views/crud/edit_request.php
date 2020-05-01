@@ -128,7 +128,7 @@
                     </div>
                   </div>
                   <div class="col">
-                    <label for="status" color="red">Status</label>
+                    <label for="status" >Status</label>
                     <select name="status" class="custom-select" id="status"value="<?php echo $baris->status; ?>" required >
                       <option value="">Pilih Status</option>
                       <option value="Menunggu">Menunggu</option>

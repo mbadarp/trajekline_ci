@@ -54,7 +54,7 @@
 </li>
 </li>
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
+<?php echo '<li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
     <i class="fas fa-fw fa-cog"></i>
     <span>Data Pengguna</span>
@@ -62,15 +62,12 @@
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Daftar Pengguna:</h6>
-      <a class="collapse-item" href="index_admin_dtadmin">Data Admin</a>
-      <a class="collapse-item" href="index_admin_dtcustomer.php">Data Customer</a>
+      <a class="collapse-item" href="'.base_url('admin').'">Data Admin</a>
+      <a class="collapse-item" href="'.base_url('customer').'">Data Customer</a>
    
     </div>
   </div>
-</li>
-
-
-
+</li>';?>
 
 <!-- Nav Item - Charts -->
 <li class="nav-item">
@@ -80,17 +77,19 @@
 </li>
 
 <!-- Nav Item - Charts -->
-<li class="nav-item">
-  <a class="nav-link" href="index_admin_request.php">
+<?php echo '<li class="nav-item">
+  <a class="nav-link" href="'.base_url('request/dtrequest').'">
     <i class="fas fa-fw fa-chart-area"></i>
     <span>Data Request Paket Tour</span></a>
-</li>
+</li>';?>
+
   <!-- Nav Item - Charts -->
-  <li class="nav-item">
-  <a class="nav-link" href="index_admin_saran.php">
+  <?php echo '<li class="nav-item">
+  <a class="nav-link" href="'.base_url('saran').'">
     <i class="fas fa-fw fa-chart-area"></i>
     <span>Data Saran</span></a>
-</li>
+</li>';?>
+  
 
 
 <!-- Divider -->
