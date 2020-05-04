@@ -33,6 +33,7 @@
     <span>Dashboard Customer</span></a>
 </li>
 <!-- Nav Item - Charts -->
+<?php echo'
 <li class="nav-item">
   <a class="nav-link" href="index_admin_validasi.php">
     <i class="fas fa-fw fa-chart-area"></i>
@@ -46,13 +47,13 @@
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Daftar Bantuan:</h6>
-      <a class="collapse-item" href="setup-profil.php">Setup Profil</a>
-      <a class="collapse-item" href="setup-syarat.php">Setup Syarat</a>
-      <a class="collapse-item" href="setup-pembayaran.php">Setup Cara Bayar</a>
+      <a class="collapse-item" href="'.base_url('bantuan/profil').'">Setup Profil</a>
+      <a class="collapse-item" href="'.base_url('bantuan/syarat').'">Setup Syarat</a>
+      <a class="collapse-item" href="'.base_url('bantuan/pembayaran').'">Setup Cara Bayar</a>
     </div>
   </div>
 </li>
-</li>
+</li>';?>
 <!-- Nav Item - Pages Collapse Menu -->
 <?php echo '<li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
