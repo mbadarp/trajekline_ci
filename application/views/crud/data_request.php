@@ -3,52 +3,63 @@
 // $getGrup = $this->session->userdata('session_grup');
 ?>
 <head>
-	<title>Data Admin</title>
+	<title>Data Saran</title>
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/jquery-1.7.1.min.js"></script>
 </head>
 <body>
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+
+<!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Tabel Data Admin</h6>
-    </div>
-    <div class="card-body">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary datatable">Data Saran</h6>
+   
+  </div>
+  <div class="card-body">
     <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
-        <tr><th>No</th>
-            <th>ID Request</th>
-            <th>Nama Lengkap</th>
-            <th>Email</th>
-            <th>Kota Tujuan</th>
-            <th>Jumlah Orang</th>
-            <th>Jumlah Hari</th>
-            <th>Tgl Berangkat</th>
-            <th>Tujuan Wisata</th>
-            <th>Tiket</th>
-            <th>Penginapan</th>
-            <th>Fasilitas</th>
-            <th>Status</th>
-            <th>Aksi</th>
-            </tr>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">ID Request</th>
+            <th scope="col">Nama Lengkap</th>
+            <th scope="col">Email</th>
+            <th scope="col">Kota Tujuan</th>
+            <th scope="col">Jumlah Orang</th>
+            <th scope="col">Lama Hari</th>
+            <th scope="col">Tgl Berangkat</th>
+            <th scope="col">Tujuan Wisata</th>
+            <th scope="col">Tiket</th>
+            <th scope="col">Penginapan</th>
+            <th scope="col">Fasilitas</th>
+            <th scope="col">Status</th>
+            <th scope="col">
+              <center><span>Action</span></center>
+            </th>
+          </tr>
         </thead>
         <tfoot>
-        <tr><th>No</th>
-        <th>ID Request</th>
-            <th>Nama Lengkap</th>
-            <th>Email</th>
-            <th>Kota Tujuan</th>
-            <th>Jumlah Orang</th>
-            <th>Jumlah Hari</th>
-            <th>Tgl Berangkat</th>
-            <th>Tujuan Wisata</th>
-            <th>Tiket</th>
-            <th>Penginapan</th>
-            <th>Fasilitas</th>
-            <th>Status</th>
-            <th>Aksi</th>
-        </tr>
+          <tr>
+          <th scope="col">No.</th>
+            <th scope="col">ID Request</th>
+            <th scope="col">Nama Lengkap</th>
+            <th scope="col">Email</th>
+            <th scope="col">Kota Tujuan</th>
+            <th scope="col">Jumlah Orang</th>
+            <th scope="col">Lama Hari</th>
+            <th scope="col">Tgl Berangkat</th>
+            <th scope="col">Tujuan Wisata</th>
+            <th scope="col">Tiket</th>
+            <th scope="col">Penginapan</th>
+            <th scope="col">Fasilitas</th>
+            <th scope="col">Status</th>
+            <th scope="col">
+              <center><span>Action</span></center>
+            </th>
+          </tr>
         </tfoot>
         <tbody>
         <?php $no =1;
@@ -80,10 +91,11 @@
         </tr>
             <?php }?>
         </tbody>
-        </table>
+      </table>
     </div>
-  
-   
-    </div>
-    </div>
+  </div>
 </div>
+
+</div>
+<!-- /.container-fluid -->
+

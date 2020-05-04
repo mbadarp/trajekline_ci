@@ -2,46 +2,54 @@
 // $getUser = $this->session->userdata('session_user');
 // $getGrup = $this->session->userdata('session_grup');
 ?>
-<head>
-	<title>Data Admin</title>
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
+<title>Data Admin</title>
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/jquery-1.7.1.min.js"></script>
 </head>
 <body>
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+
+<!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Tabel Data Admin</h6>
-    <br>
-    <a href="admin/tambah" class="btn btn btn-success btn-sm editbtn"><span class="text">Tambah</span></a>
-    </div>
-    <div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-        <tr><th>No</th>
-            <th>ID Admin</th>
-            <th>Nama Admin</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Email</th>
-            <th>Level</th>
-            <th>Aksi</th>
-            </tr>
-        </thead>
-        <tfoot>
-        <tr><th>No</th>
-            <th>ID Admin</th>
-            <th>Nama Admin</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Email</th>
-            <th>Level</th>
-            <th>Aksi</th>
-        </tr>
-        </tfoot>
-        <tbody>
-        <?php $no =1;
+<div class="card-header py-3">
+<h6 class="m-0 font-weight-bold text-primary datatable">Data Saran</h6>
+
+</div>
+<div class="card-body">
+<div class="table-responsive">
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">ID Admin</th>
+        <th scope="col">Nama Admin</th>
+        <th scope="col">Username</th>
+        <th scope="col">Password</th>
+        <th scope="col">Email</th>
+        <th scope="col">Level</th>
+        <th scope="col">
+          <center><span>Action</span></center>
+        </th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+      <th scope="col">No.</th>
+        <th scope="col">ID Admin</th>
+        <th scope="col">Nama Admin</th>
+        <th scope="col">Username</th>
+        <th scope="col">Password</th>
+        <th scope="col">Email</th>
+        <th scope="col">Level</th>
+        <th scope="col">
+          <center><span>Action</span></center>
+        </th>
+      </tr>
+    </tfoot>
+    <tbody>
+    <?php $no =1;
             foreach($user as $baris){
         ?>
         <tr><td><?php echo $no++;?></td>
@@ -63,11 +71,11 @@
             </td>
         </tr>
             <?php }?>
-        </tbody>
-        </table>
-    </div>
-  
-    <!-- <a href="admin/tambah" class="btn btn-succes btn-icon-split"><span class="text">Tambah</span></a> -->
-    </div>
-    </div>
+    </tbody>
+  </table>
 </div>
+</div>
+</div>
+
+</div>
+<!-- /.container-fluid -->
