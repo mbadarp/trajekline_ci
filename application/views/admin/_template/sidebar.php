@@ -35,7 +35,7 @@
 <!-- Nav Item - Charts -->
 <?php echo'
 <li class="nav-item">
-  <a class="nav-link" href="index_admin_validasi.php">
+  <a class="nav-link" href="'.base_url('validasi/index').'">
     <i class="fas fa-fw fa-chart-area"></i>
     <span>Validasi Booking</span></a>
 </li>
