@@ -7,9 +7,11 @@ class Home extends CI_Controller{
     }
         
     public function index (){
-        $this->template_customer->views('Home_view');
-        
+        $data['paket']= $this->Home_model->getAll()->result();
+        $this->template_customer->views('Home_view', $data);
+       
     }
+    
 }
 
 ?>

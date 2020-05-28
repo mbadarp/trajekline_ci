@@ -71,11 +71,11 @@
 </li>';?>
 
 <!-- Nav Item - Charts -->
-<li class="nav-item">
-  <a class="nav-link" href="index_admin.php">
+<?php echo '<li class="nav-item">
+  <a class="nav-link" href="'.base_url('admin/getPaket').'">
     <i class="fas fa-fw fa-chart-area"></i>
     <span>Data Paket Tour</span></a>
-</li>
+</li>';?>
 
 <!-- Nav Item - Charts -->
 <?php echo '<li class="nav-item">

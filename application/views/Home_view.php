@@ -53,13 +53,16 @@
               <li><a href="#contact">Hubungi Kami</a></li>
             </ul>
           </li>
-          <?php session_start();
+          <!-- <?php 
+          // session_start();
 
-          	if(isset($_SESSION['username'])){
-	        ?>
+          // 	if(isset($_SESSION['username'])){
+	        // ?> -->
 			
 			
-        <li class="menu-active"><a href="profil.php" >Selamat datang, <?php echo "$_SESSION[username]"; ?></a></li>
+        <li class="menu-active"><a href="profil.php" >Selamat datang, <?php
+        //  echo "$_SESSION[username]"; 
+         ?></a></li>
         <li ><a  class="dropdown-toggle icon-cog" href="#"></a>
             <ul>
               <li><a href="profil.php">Profil</a></li>
@@ -68,7 +71,7 @@
             </ul>
           </li>
         <?php
-	        }else{
+	        // }else{
 	      ?>
 				<li class="menu-has-children"><a href="">Register</a>
             <ul>
@@ -76,7 +79,7 @@
               <li><a href="register.php">Daftar</a></li>
             </ul>
 	<?php
-	}
+	// }
 	?>
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -88,7 +91,7 @@
     Home
   ============================-->
   <section id="home" class="masthead text-white text-center">
-  <?php include 'koneksi.php'; ?> <!-- Panggil database -->
+  <?php  ?> <!-- Panggil database -->
 
     <div class="home-container">
       <h1>Trajekline</h1>
@@ -145,44 +148,45 @@
 </div>
 </div>
             <?php 
-            if(isset($_GET['cari'])){
-              $cari = $_GET['cari'];
-              echo "<b>Hasil Pencarian : ".$cari."</b>";
-            }
+            // if(isset($_GET['cari'])){
+            //   $cari = $_GET['cari'];
+            //   echo "<b>Hasil Pencarian : ".$cari."</b>";
+            // }
             ?>
 <div class="row" id="wisata-wrapper">
 
         <?php
-                    // memanggil file koneksi.php untuk koneksi database
-                    include "koneksi.php";
+                    // // memanggil file koneksi.php untuk koneksi database
+                    
 
-                    // variabel $query_mysql untuk menyimpan hasil dari fungsi mysqli_query()
-                    // mengambil semua data dari tb_siswa
-                    $query_mysql = mysqli_query($koneksi, "SELECT * FROM paket_tour ")or die(mysqli_error($koneksi));
+                    // // variabel $query_mysql untuk menyimpan hasil dari fungsi mysqli_query()
+                    // // mengambil semua data dari tb_siswa
+                    // $query_mysql = mysqli_query($koneksi, "SELECT * FROM paket_tour ")or die(mysqli_error($koneksi));
 
-                    // membuat variavel $nomor untuk penomoran baris otomatis tabel
+                    // // membuat variavel $nomor untuk penomoran baris otomatis tabel
                    
-                    if(isset($_GET['cari'])){
-                      $cari = $_GET['cari'];
-                      $nama_paket = mysqli_query($koneksi, "SELECT * FROM paket_tour WHERE nama_paket LIKE'%".$cari."%'");
-                      $query_mysql = mysqli_query($koneksi, "SELECT * FROM paket_tour ");
-                    }else{
-                      $nama_paket = mysqli_query($koneksi, "SELECT * FROM paket_tour ")or die(mysqli_error($koneksi));
-                    }
-                    // perulangan untuk mencetak tiap" record dari hasil query
-                    // hasil query tersimpan dalam bentuk array
-                    // digunakan fungsi mysqli_fetch_array() untuk mengambil nilai dari tiap baris record dari array
-                    while($data = mysqli_fetch_array($nama_paket)) {
+                    // if(isset($_GET['cari'])){
+                    //   $cari = $_GET['cari'];
+                    //   $nama_paket = mysqli_query($koneksi, "SELECT * FROM paket_tour WHERE nama_paket LIKE'%".$cari."%'");
+                    //   $query_mysql = mysqli_query($koneksi, "SELECT * FROM paket_tour ");
+                    // }else{
+                    //   $nama_paket = mysqli_query($koneksi, "SELECT * FROM paket_tour ")or die(mysqli_error($koneksi));
+                    // }
+                    // // perulangan untuk mencetak tiap" record dari hasil query
+                    // // hasil query tersimpan dalam bentuk array
+                    // // digunakan fungsi mysqli_fetch_array() untuk mengambil nilai dari tiap baris record dari array
+                    // while($data = mysqli_fetch_array($nama_paket)) {
+                  foreach ($paket as $tour){
                   ?>
       
 
 
-          <div class="col-lg-3 col-md-6 wisata-item filter-<?php echo $data['kategori']; ?>">
-            <a href="detail-paket.php?id_paket=<?php echo $data['id_paket']; ?>">
-              <img src="img/destinasi/<?php echo $data['foto'];?>" alt="">
+          <div class="col-lg-3 col-md-6 wisata-item filter-<?php echo $tour->kategori; ?>">
+            <a href="detail-paket.php?id_paket=<?php echo $tour->id_paket; ?>">
+              <img src="img/destinasi/<?php echo $tour->foto;?>" alt="">
               <div class="details">
-                <h4><?php  echo $data['nama_paket']; ?></h4>
-                <span>Rp. <?php echo number_format($data['harga'],0,',','.'); ?></span>
+                <h4><?php  echo $tour->nama_paket; ?></h4>
+                <span>Rp. <?php echo number_format($tour->harga,0,',','.'); ?></span>
               </div>
             </a>
           </div>

@@ -67,5 +67,47 @@ class admin extends CI_Controller{
         $this->template->views('crud/tambah_admin');
     }
 
+    //PAKET TOUR
+    public function getPaket(){
+        $this->load->model('admin_model');
+        $data['paket'] = $this->admin_model->getPaketById()->result();
+         $this->template->views('crud/data_paket', $data);
+    }
+    
+    public function input_paket(){
+        //konfigurasi
+        $config =[
+            'upload_path' => './asset/img/destinasi/',
+            'allowed_types' => 'gif|jpg|png',
+            'max_size' => 1000, 'max_width' => 1000,
+            'max_height' => 1000
+        ];
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload())//jika gagal upload
+        {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('crud/tambah_paket',$error);
+            
+        }else
+        //jika sukses upload
+        {
+            $file = $this->upload->data();
+            //mengambil data diform
+            $data = ['foto' => $file['file_name'],
+            'nama_paket' => set_value('nama_paket'),
+            'nama_wisata' => set_value('nama_wisata'),
+            'harga' => set_value('harga'),
+            'fasilitas' => set_value('fasilitas'),
+            'deskripsi' => set_value('deskripsi'),
+            'kategori' => set_value('kategori')
+        ];
+        $this->admin_model->input_paket($data);
+        redirect('admin/getPaket');
+        }
+    }
+    public function tambah_paket(){
+        $this->template->views('crud/tambah_paket');
+    }   
+
 }
 ?>

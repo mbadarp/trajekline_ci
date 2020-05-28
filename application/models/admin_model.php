@@ -30,5 +30,20 @@ class admin_model extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+//PAKET TOUR
+    function getPaketById(){
+        $this->db->select('*');
+        $this->db->from('paket_tour');
+        $query = $this->db->get();
+        return $query;
+    }
+    function input_paket($data){
+        try{
+            $this->db->insert('paket_tour', $data);
+            return true;
+        }catch(Exception $e){
+            
+        }
+    }
 }
 ?>

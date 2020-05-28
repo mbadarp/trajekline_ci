@@ -81,9 +81,9 @@
             <td>
             <?php
                    
-                 echo '<a href="'.base_url('admin/edit/'.$baris->id_pesan).'" class="btn btn-success btn-icon-split"><i class="fas fa-edit" style="padding: 5px;"></i></a>';
-                 echo "  ";
-                echo '<a href="'.base_url('admin/hapus/'.$baris->id_pesan).'" class="btn btn-danger btn-icon-split"><i class="fas fa-trash" style="padding: 5px;"></i></a>';
+                 echo '<a href="'.base_url('validasi/edit/'.$baris->id_pesan).'" class="btn btn-success btn-icon-split"><i class="fas fa-edit" style="padding: 5px;"></i></a>';
+                 echo " ";
+                echo '<a href="'.base_url('validasi/hapus/'.$baris->id_pesan).'" class="btn btn-danger btn-icon-split"><i class="fas fa-trash" style="padding: 5px;"></i></a>';
                     
             ?>
             
