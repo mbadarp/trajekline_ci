@@ -1,5 +1,6 @@
 <?php
 class admin_model extends CI_Model{
+    
     function getAll(){
         $this->db->select('*');
         $this->db->from('login_admin');
@@ -22,13 +23,8 @@ class admin_model extends CI_Model{
         $this->db->delete($table);
     }
 
-    function login($user,$pass,$table){
-        $this->db->select('*');
-        $this->db->from('login_admin');
-        $this->db->where('username',$user);
-        $this->db->where('password',$pass);
-        $query = $this->db->get();
-        return $query;
+    function cek_login($table,$where){
+       return $this->db->get_where($table,$where);
     }
 //PAKET TOUR
     function getPaketById(){
@@ -45,5 +41,19 @@ class admin_model extends CI_Model{
             
         }
     }
+
+    //LOGIN
+    function login($user,$pass,$table){
+        $this->db->select('*');
+        $this->db->from('login_admin');
+        $this->db->where('user_admin',$user);
+        $this->db->where('password',$pass);
+        $query = $this->db->get();
+        return $query;
+    }
+    function isNotLogin(){
+        return $this->session->userdata('session_admin') === null;
+    }
+   
 }
 ?>

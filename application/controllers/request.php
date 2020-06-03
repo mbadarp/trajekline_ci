@@ -4,7 +4,9 @@ class request extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
 		$this->load->model('request_model');
-		$this->load->library('template_customer');
+        $this->load->library('template_customer');
+        $this->load->model('admin_model');
+        if($this->admin_model->isNotLogin()) redirect('login');
 	}
 	public function index (){
 		$data['request'] = $this->request_model->getAll()->result();

@@ -4,9 +4,13 @@ class admin extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('admin_model');
+        if($this->admin_model->isNotLogin()) redirect('login');
     }
     
     public function index(){
+        // if($this->session->userdata('status') != "login"){
+        //     redirect(base_url('admin/login_admin'));
+        // }
         $data['user'] = $this->admin_model->getAll()->result();
          $this->template->views('crud/data_admin', $data);
     }
@@ -108,6 +112,8 @@ class admin extends CI_Controller{
     public function tambah_paket(){
         $this->template->views('crud/tambah_paket');
     }   
+    
+
 
 }
 ?>

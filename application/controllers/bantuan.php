@@ -4,6 +4,8 @@ class bantuan extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('bantuan_model');
+        $this->load->model('admin_model');
+        if($this->admin_model->isNotLogin()) redirect('login');
     }
     
     public function profil(){

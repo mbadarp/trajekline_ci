@@ -1,52 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
+<!--==========================
+  Header
+  ============================-->
+  <header id="header">
+    <div class="container">
 
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">TrajekLine</a>
-
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Paket Tour</a>
-    </li>
-
-    <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Bantuan
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Profil TrajekLine</a>
-        <a class="dropdown-item" href="#">Ketentuan & Persyaratan</a>
-        <a class="dropdown-item" href="#">Cara Pembayaran</a>
-        <a class="dropdown-item" href="#">Hubungi Kami</a>
+      <div id="logo" class="pull-left">
+        <a href="#home"><img src="#img" alt="" title="" /></img></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="#hero">Regna</a></h1>-->
       </div>
-    </li>
 
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Register
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Daftar</a>
-        <a class="dropdown-item" href="#">Login</a>
-      </div>
-    </li>
-  </ul>
-</nav>
-<br>
-
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="#home">Home</a></li>
+          <li><a href="#wisata">Paket Tour</a></li>
+          
+            <li class="menu-has-children"><a href="">Bantuan</a>
+            <ul>
+            <li><a href="aboutus.php?post=profil">Profil Trajekline</a></li>
+              <li><a href="aboutus.php?post=syarat">Ketentuan & Persyaratan</a></li>
+              <li><a href="aboutus.php?post=pembayaran">Cara Pembayaran</a></li>
+              <li><a href="#contact">Hubungi Kami</a></li>
+            </ul>
+          </li>
+          <?php 
+          // session_start();
+          
+          // if(isset($_SESSION['username'])){
+ 
+	        ?>
+			
+			
+        <li class="menu-active"><a href="profil.php" >Selamat datang, <?php //echo "$_SESSION[username]"; ?></a></li>
+        <li ><a  class="dropdown-toggle icon-cog"  href="#">&#8801;</a>
+            <ul>
+              <li><a href="profil.php">Profil</a></li>
+              <li><a href="bookingList.php">Booking List</a></li>
+              <li><a href="logout.php">Keluar</a></li>
+            </ul>
+          </li>
+        <?php
+	        // }else{
+	      ?>
+				<li class="menu-has-children"><a href="">Register</a>
+            <ul>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="register.php">Daftar</a></li>
+            </ul>
+	<?php
+	// }
+	?>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+   
+  </header><!-- #header -->
