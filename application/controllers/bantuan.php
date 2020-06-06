@@ -22,6 +22,19 @@ class bantuan extends CI_Controller{
         $data['pembayaran'] = $this->bantuan_model->getCbayar();
          $this->template->views('crud/setup_pembayaran', $data);
     }
+    
+    public function profilview(){
+        $data['profil'] = $this->bantuan_model->getProfil();
+        $this->template_customer->views('profil', $data);   
+    }
+    public function syaratview(){
+        $data['syarat'] = $this->bantuan_model->getSyarat();
+        $this->template_customer->views('syarat', $data);   
+    }
+    public function pembayaranview(){
+        $data['pembayaran'] = $this->bantuan_model->getCbayar();
+        $this->template_customer->views('pembayaran', $data);   
+    }
     public function hapusprofil($id_bantuan){
         $where = array('id_bantuan' => $id_bantuan);
         $this->bantuan_model->hapus_data($where,'setup_bantuan');

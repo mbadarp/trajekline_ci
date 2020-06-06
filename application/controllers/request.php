@@ -5,12 +5,16 @@ class request extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('request_model');
         $this->load->library('template_customer');
-        $this->load->model('admin_model');
-        if($this->admin_model->isNotLogin()) redirect('login');
+        // $this->load->model('admin_model');
+        // if($this->admin_model->isNotLogin()) redirect('login');
 	}
 	public function index (){
-		$data['request'] = $this->request_model->getAll()->result();
-		$this->template_customer->views('form/form_request',$data);
+        $data['request'] = $this->request_model->getAll()->result();
+        // $this->load->view('admin/_template/head');
+        // $this->load->view('form_request',$data);
+        // $this->load->view('admin/_template/footer');
+        $this->template_customer->views('form_request',$data);
+        
 	}
 	public function dtrequest(){
 		$data['request'] = $this->request_model->getAll()->result();

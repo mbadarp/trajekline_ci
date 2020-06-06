@@ -4,11 +4,12 @@ class saran extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('saran_model');
-        $this->load->model('admin_model');
-        if($this->admin_model->isNotLogin()) redirect('login');
+       
     }
     
     public function index(){
+        $this->load->model('admin_model');
+        if($this->admin_model->isNotLogin()) redirect('login');
         $data['saran'] = $this->saran_model->getAll()->result();
          $this->template->views('crud/data_saran', $data);
     }
@@ -32,7 +33,7 @@ class saran extends CI_Controller{
         );
 
         $this->saran_model->input_data($data, 'tbl_saran');
-        redirect('saran/index');
+        redirect('home/index/#contact');
     }
     public function tambah(){
         //menampilkan tambah_mahasiswa

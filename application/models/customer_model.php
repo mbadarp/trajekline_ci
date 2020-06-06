@@ -10,6 +10,13 @@ class customer_model extends CI_Model{
         $this->db->insert($table,$data);
         
     }
+    function getProfil(){
+        $this->db->select('*');
+        $this->db->from('login_user');
+        $this->db->where('login_user.id',$username);
+        $query = $this->db->get();
+        return $query;
+    }
     function edit_data($where,$table){
         return $this->db->get_where($table,$where);
     }
@@ -29,6 +36,9 @@ class customer_model extends CI_Model{
         $this->db->where('password',$pass);
         $query = $this->db->get();
         return $query;
+    }
+    function isNotLogin(){
+        return $this->session->userdata('session_customer') === null;
     }
 }
 ?>

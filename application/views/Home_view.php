@@ -49,7 +49,7 @@
              <h1 style="color:black;">Buat Paket Tour Anda Sendiri</h1>
              <p style="color:black; font-weight:bold;">Tentukan paket terbaik untuk anda</p> 
              </div>
-             <a href="form-request.php" class="btn btn-info" role="button">Buat Paket</a>
+             <a href="<?php echo base_url('request/index'); ?>" class="btn btn-info" role="button">Buat Paket</a>
         </div>
         <div class="row">
 
@@ -161,7 +161,7 @@
             <div class="form">
               <div id="sendmessage">Your message has been sent. Thank you!</div>
               <div id="errormessage"></div>
-              <form action="kirimMasukan.php" method="post" role="form" class="contactForm">
+              <form action="<?php echo base_url('saran/input'); ?>" method="post" role="form" class="contactForm">
                 <div class="form-group">
                 <input id="id_saran" type="hidden" name="id_saran">
                   <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Anda"  />
