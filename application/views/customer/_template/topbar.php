@@ -26,7 +26,7 @@
           <?php 
           // session_start();
           if($this->session->userdata("session_customer")){
-            
+
           
           // if(isset($_SESSION['username'])){
  
@@ -36,13 +36,10 @@
         <li class="menu-active"><a href="profil.php" >Selamat datang, <?php echo $this->session->userdata("session_customer"); ?></a></li>
         <li ><a  class="dropdown-toggle icon-cog"  href="#">&#8801;</a>
             <ul>
-              <li><a href="<?php echo base_url('customer/getProfil/'.$data->id); ?>">Profil</a></li>
+              <li><a href="<?php echo base_url('customer/profil'); ?>">Profil</a></li>
               <li><a href="<?php echo base_url('bantuan/booking'); ?>">Booking List</a></li>
               <li><a href="<?php echo base_url('customer/logout'); ?>">Keluar</a></li>
             </ul>
-            <?php
-	         
-	      ?>
           </li>
         <?php
 	         }else{

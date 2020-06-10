@@ -10,17 +10,19 @@
         </div>
     </div>
 </div>
+  <?php
   
+  foreach($profil as $baris){
+    $profil = $this->session->set_userdata('session_customer');
+    
+	// $query	=mysqli_query($koneksi,"SELECT * FROM login_user WHERE username='$username'");
+	// $baris	=mysqli_fetch_array($query);
+?>
     
     <!-- ---------------------------------------- ISI TAB ------------------------------------- -->
    
     <div class="container" id="datadiri">
-    <?php
-  
-  foreach($profil as $baris){
-    // $profil = $this->session->set_userdata('session_customer');
-?>
-      <div class="span6">
+            <div class="span6">
                 <legend><p><h3><?php echo $baris->nama_depan;?>   <?php echo $baris->nama_belakang;?></h3></p></legend>
             </div>
 			<div class="span6">

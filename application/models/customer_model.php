@@ -10,12 +10,12 @@ class customer_model extends CI_Model{
         $this->db->insert($table,$data);
         
     }
-    function profil_m($where,$table){
-        return $this->db->get_where($table,$where);
-        // $this->db->select('*');
-        // $this->db->from('login_user');
-        // $query = $this->db->get();
-        // return $query;
+    function getProfil(){
+        $this->db->select('*');
+        $this->db->from('login_user');
+        $this->db->where('login_user.id',$username);
+        $query = $this->db->get();
+        return $query;
     }
     function edit_data($where,$table){
         return $this->db->get_where($table,$where);
