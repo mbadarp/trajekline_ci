@@ -2,7 +2,7 @@
 class bookingList_model extends CI_Model {
     public function getAll(){
         $this->db->select('*');
-        $this->db->from('tbl_pesan', 'paket_tour', 'login_user');
+        $this->db->from('tbl_pesan');
         $this->db->join('paket_tour', 'tbl_pesan.id_paket=paket_tour.id_paket');
         $this->db->join('login_user', 'username=login_user.username');
         //$this->db->join('tbl_pesan.id=login_user.id', 'tbl_pesan.id_paket=paket_tour.id_paket', 'username=login_user.username');
