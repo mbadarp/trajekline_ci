@@ -93,13 +93,23 @@ class customer extends CI_Controller{
         $this->customer_model->input_data($data, 'login_user');
         redirect('customer/login?pesan=berhasil');
     }
-    public function profil(){
-        $data['profil']= $this->customer_model->getAll()->result();
+    public function getprofil($id){
+        $where = array('id' => $id);
+        $data['user'] = $this->customer_model->profil_m($where, 'login_user')->result();
+        // $this->template->views('crud/edit_admin',$data);
+      
+        // $profil= $this->customer_model->getProfil($id);
+        // $data['profil'] = $profil;
         $this->load->view('customer/_template/head');
         $this->load->view('customer/_template/topbar');
         $this->load->view('customer/_template/js');
         $this->load->view('profil', $data);
         $this->load->view('customer/_template/footer');
+    }
+    public function edit($id_admin){
+        $where = array('id_admin' => $id_admin);
+        $data['user'] = $this->admin_model->edit_data($where, 'login_admin')->result();
+        $this->template->views('crud/edit_admin',$data);
     }
     public function edit_profil(){
         $nama_depan = $this->input->post('nama_depan');

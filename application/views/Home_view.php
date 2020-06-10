@@ -98,7 +98,7 @@
 
 
           <div class="col-lg-3 col-md-6 wisata-item filter-<?php echo $tour->kategori; ?>">
-            <a href="detail-paket.php?id_paket=<?php echo $tour->id_paket; ?>">
+            <a href="<?php echo base_url('home/detail_paket/'.$tour->id_paket); ?>">
               <img src="<?php echo base_url();?>asset/img/destinasi/<?php echo $tour->foto;?>" alt="">
               <div class="details">
                 <h4><?php  echo $tour->nama_paket; ?></h4>
