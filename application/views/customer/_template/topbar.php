@@ -37,7 +37,7 @@
         <li ><a  class="dropdown-toggle icon-cog"  href="#">&#8801;</a>
             <ul>
               <li><a href="<?php echo base_url('customer/profil'); ?>">Profil</a></li>
-              <li><a href="<?php echo base_url('bantuan/booking'); ?>">Booking List</a></li>
+              <li><a href="<?php echo base_url('bookingList'); ?>">Booking List</a></li>
               <li><a href="<?php echo base_url('customer/logout'); ?>">Keluar</a></li>
             </ul>
           </li>
