@@ -47,9 +47,10 @@
                       <?php
                         $no=1;
 
-                        foreach($data as $row) {?>
-                            <td><?php echo "".$row['id_pesan']; ?></td>
-                            <td><?php echo "".$row['nama_depan']; ?> <?php echo "".$row['nama_belakang']; ?></td>
+                        foreach($pesanan as $row) {?>
+                        <td><?php echo $no++;?></td>
+                            <td><?php echo $row->id_pesan;?></td>
+                            <td><?php echo $row->nama_depan;?> <?php echo $row->nama_belakang;?></td>
                             <td><?php echo "".$row['tgl_pesan']; ?></td>
                             <td><?php echo "".$row['tgl_tour']; ?></td>
                             <td><?php echo "".$row['nama_paket']; ?></td>
