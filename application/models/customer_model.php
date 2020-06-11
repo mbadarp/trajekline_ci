@@ -31,13 +31,14 @@ class customer_model extends CI_Model{
         // return $query;
     }
    function getProfil(){
+       
         $this->db->select("*");
         $this->db->from('login_user');
-        $this->db->where('login_user.id');
-        $profil = $this->db->get()->result_array();
+        $this->db->where('login_user.username', $this->session->userdata('session_customer'));
+        $query = $this->db->get()->result_array();
         // $income = $this->db->query($query)->result_array();
 
-        return $profil;
+        return $query;
    }
     
     function edit_data($where,$table){

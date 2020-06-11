@@ -94,8 +94,8 @@ class customer extends CI_Controller{
         redirect('customer/login?pesan=berhasil');
     }
     public function profil(){
-        $username = $this->session->userdata('username');
-        $data['user']= $this->customer_model->getUser($username);
+        $username = $this->session->userdata('session_customer');
+        // $data['user']= $this->customer_model->getUser($username);
         $data['profil'] = $this->customer_model->getProfil(); 
         $this->load->view('customer/_template/head');
         $this->load->view('customer/_template/topbar');

@@ -28,7 +28,7 @@
 <!-- Nav Item - Pages Collapse Menu -->
 <!-- Nav Item - Charts -->
 <li class="nav-item">
-  <a class="nav-link" href="home_admin.php">
+  <a class="nav-link" href="<?php echo base_url('admin/v_booking');?>">
     <i class="fas fa-fw fa-chart-area"></i>
     <span>Dashboard Customer</span></a>
 </li>

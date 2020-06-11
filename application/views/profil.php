@@ -11,7 +11,7 @@
     </div>
 </div>
   <?php
-
+    $this->session->userdata("session_customer");
     foreach($profil as $baris) {
 
     
