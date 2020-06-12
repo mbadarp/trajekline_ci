@@ -10,13 +10,37 @@ class customer_model extends CI_Model{
         $this->db->insert($table,$data);
         
     }
-    function getProfil(){
-        $this->db->select('*');
-        $this->db->from('login_user');
-        $this->db->where('login_user.id',$username);
-        $query = $this->db->get();
-        return $query;
+    function getUser($username){
+        $user = $this->db->get_where('login_user', ['username' => $username])->row_array();
+
+        return $user;
+        // $results = array();
+        // $this->db->select("*");
+        // $this->db->from('login_user');
+        // $this->db->where('username', $this->session->userdata('username'));
+        // $query = $this->db->get();
+
+        // if($query->num_rows() > 0) {
+        //     $results = $query->result();
+        // }
+        // return $results;
+        // $this->db->select('*');
+        // $this->db->from('login_user');
+        // $this->db->where('username',$this->session->userdata('username'));
+        // $query = $this->db->get();
+        // return $query;
     }
+   function getProfil(){
+       
+        $this->db->select("*");
+        $this->db->from('login_user');
+        $this->db->where('login_user.username', $this->session->userdata('session_customer'));
+        $query = $this->db->get()->result_array();
+        // $income = $this->db->query($query)->result_array();
+
+        return $query;
+   }
+    
     function edit_data($where,$table){
         return $this->db->get_where($table,$where);
     }

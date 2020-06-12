@@ -38,7 +38,7 @@
   </div>
   <!-- End of Page Wrapper -->
 
- <!-- <?php echo @$js; ?> -->
+ <?php echo @$js; ?> 
  
 
 

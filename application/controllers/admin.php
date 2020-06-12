@@ -112,6 +112,13 @@ class admin extends CI_Controller{
     public function tambah_paket(){
         $this->template->views('crud/tambah_paket');
     }   
+
+    public function v_booking(){
+        $this->load->model('validasi_model');
+        $data['booking'] = $this->validasi_model->getBooking();
+        $data['bukti'] = $this->validasi_model->getBukti();
+        $this->template->views('crud/home_admin', $data);
+    }
     
 
 

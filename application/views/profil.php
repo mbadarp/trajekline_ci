@@ -15,9 +15,9 @@
 </div>
 
   <?php
-  
-  foreach($profil as $baris){
-    $profil = $this->session->set_userdata('session_customer');
+    $this->session->userdata("session_customer");
+    foreach($profil as $baris) {
+
     
 	// $query	=mysqli_query($koneksi,"SELECT * FROM login_user WHERE username='$username'");
 	// $baris	=mysqli_fetch_array($query);
