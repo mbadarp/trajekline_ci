@@ -6,7 +6,7 @@
            <div class="panel-heading"><h3>Tambah Data Paket Tour</h3></div>
            <div class="panel-body  ">
              
-                 <form name="tambah_profil" action="<?php echo base_url('admin/input_paket');?>" method="post" enctype="multipart/form-data">
+                 <form name="tambah_profil" action="<?php echo base_url().'admin/input_paket';?>" method="post" enctype="multipart/form-data">
                        <fieldset>
                        <div class="form-row">
                   <div class="col">

@@ -10,38 +10,36 @@ class customer_model extends CI_Model{
         $this->db->insert($table,$data);
         
     }
-    function getUser($username){
-        $user = $this->db->get_where('login_user', ['username' => $username])->row_array();
+    function getUser($username,$table){
+        $username = $this->session->userdata('session_customer');
+       return $this->db->get_where($table,$username);
+                // $this->db->select('*');
+                // $this->db->from('paket_tour');
+                // $this->db->where('paket_tour.id_paket');
+                // return $this->db->get()->result();
+           
+        // $user = $this->db->get_where('login_user', ['username' => $username])->row_array();
 
-        return $user;
-        // $results = array();
-        // $this->db->select("*");
-        // $this->db->from('login_user');
-        // $this->db->where('username', $this->session->userdata('username'));
-        // $query = $this->db->get();
-
-        // if($query->num_rows() > 0) {
-        //     $results = $query->result();
-        // }
-        // return $results;
-        // $this->db->select('*');
-        // $this->db->from('login_user');
-        // $this->db->where('username',$this->session->userdata('username'));
-        // $query = $this->db->get();
-        // return $query;
+        // return $user;
+        
     }
-   function getProfil(){
-        $this->db->select("*");
+   function getProfil($id = null){
         $this->db->from('login_user');
-        $this->db->where('login_user.id');
-        $profil = $this->db->get()->result_array();
-        // $income = $this->db->query($query)->result_array();
-
-        return $profil;
+        if($id != null){
+            $this->db->where('username',$id);
+        }
+        $query = $this->db->get();
+        return $query;
    }
     
-    function edit_data($where,$table){
-        return $this->db->get_where($table,$where);
+    function edit_data($id = null){
+        $this->db->from('login_user');
+        if($id != null){
+            $this->db->where('username',$id);
+        }
+        $query = $this->db->get();
+        return $query;
+        // return $this->db->get_where($table,$where);
     }
     function update_data($where, $data, $table){
         $this->db->where($where);

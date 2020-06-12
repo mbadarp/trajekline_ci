@@ -1,3 +1,9 @@
+<?php 
+
+$getUser = $this->session->set_userdata('session_level');
+?>
+
+
 <div class="">
     <div class="row" style="background: url(<?php echo base_url();?>asset/img/d-bromo2.jpg) top left no-repeat; background-size: cover; height:340px ;">
         <div class="container" style="padding: 40px 20px">
@@ -39,7 +45,7 @@
                         $no=1;
 
                         foreach($pesanan as $row) {?>
-                        <td><?php echo $no++;?></td>
+                            <td><?php echo $no++;?></td>
                             <td><?php echo $row->id_pesan;?></td>
                             <td><?php echo $row->nama_depan;?> <?php echo $row->nama_belakang;?></td>
                             <td><?php echo "".$row->tgl_pesan; ?></td>
@@ -48,7 +54,7 @@
                             <td><?php echo "".$row->nama_wisata; ?></td>
                             <td><?php echo "".$row->harga; ?></td>
                             <td><?php echo "".$row->harga; ?></td>
-                            <?php } ?>
+                            
                             <td><?php
 								                  $now= date("Y-m-d");
 								                  if($row->status=='S2'&&$row->tgl_tour>=$now||$row->status=='S3'&&$row->tgl_tour>=$now){
@@ -63,14 +69,12 @@
 									                echo "Menunggu";
 								                ?>
 									              <br/>
-                                <a class="button" href="uploadBukti.php?id=<?php echo $row[0]; ?>" data-hint="Upload Bukti Pembayaran">Upload Bukti</a>
+                                <a class="button"  data-hint="Upload Bukti Pembayaran">Upload Bukti</a>
 							                	<?php
-							                	}
-							          ?></td>
-                        </div>
-                     
+							                	}?>
+                            </td> 
                     </tr>
-             
+                        <?php } ?>
                   </tbody>
                 </table>
               </div>

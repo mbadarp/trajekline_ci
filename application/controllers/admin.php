@@ -87,14 +87,14 @@ class admin extends CI_Controller{
             'max_height' => 1000
         ];
         $this->load->library('upload', $config);
-        if (!$this->upload->do_upload())//jika gagal upload
-        {
-            $error = array('error' => $this->upload->display_errors());
-            $this->load->view('crud/tambah_paket',$error);
+        //if (!$this->upload->do_upload())//jika gagal upload
+        //{
+            //$error = array('error' => $this->upload->display_errors());
+            //$this->load->view('crud/tambah_paket',$error);
             
-        }else
+        //}else
         //jika sukses upload
-        {
+        //{
             $file = $this->upload->data();
             //mengambil data diform
             $data = ['foto' => $file['file_name'],
@@ -103,15 +103,24 @@ class admin extends CI_Controller{
             'harga' => set_value('harga'),
             'fasilitas' => set_value('fasilitas'),
             'deskripsi' => set_value('deskripsi'),
-            'kategori' => set_value('kategori')
+            'kategori' => set_value('kategori'),
+            'foto' => set_value('foto')
         ];
-        $this->admin_model->input_paket($data);
+        $this->admin_model->input_paket($data, 'paket_tour');
         redirect('admin/getPaket');
-        }
+
+        //}
     }
     public function tambah_paket(){
         $this->template->views('crud/tambah_paket');
     }   
+
+    public function v_booking(){
+        $this->load->model('validasi_model');
+        $data['booking'] = $this->validasi_model->getBooking();
+        $data['bukti'] = $this->validasi_model->getBukti();
+        $this->template->views('crud/home_admin', $data);
+    }
     
 
 

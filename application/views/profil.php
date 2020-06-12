@@ -1,4 +1,7 @@
+<body>
+
 <section id="profilCust">
+<?php  ?> <!-- Panggil database -->
 
   <div class="">
     <div class="row" style="background: url(<?php echo base_url();?>asset/img/d-bromo2.jpg) top left no-repeat; background-size: cover; height:340px ;">
@@ -10,8 +13,9 @@
         </div>
     </div>
 </div>
-  <?php
 
+  <?php
+    $this->session->userdata("session_customer");
     foreach($profil as $baris) {
 
     
@@ -52,7 +56,7 @@
                     </tbody>
 				</table>
 				<p class="tertiary-text-secondary"><small>nb: Silahkan lengkapi biodata ini dulu sebelum melakukan booking!!</small></p>
-				<a class="button" href="editProfil.php">Edit Profil</a>
+				<a class="button" href="<?php echo base_url('customer/edit_cust'); ?>">Edit Profil</a>
             </div>
     </div>
 
