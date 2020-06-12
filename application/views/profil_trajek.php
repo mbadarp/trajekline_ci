@@ -1,6 +1,3 @@
-<?php
-include 'koneksi.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +15,14 @@ include 'koneksi.php';
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url("asset/lib/bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="<?php echo base_url("asset/lib/font-awesome/css/font-awesome.min.css"); ?>" rel="stylesheet">
+  <link href="<?php echo base_url("asset/lib/animate/animate.min.css"); ?>" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="<?php echo base_url("asset/css/style.css"); ?>" rel="stylesheet">
   
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
  <!-- Corousel JS-->
@@ -73,14 +70,9 @@ include 'koneksi.php';
               <li><a href="#contact">Hubungi Kami</a></li>
             </ul>
           </li>
-          <?php session_start();
-
-            if(isset($_SESSION['username'])){
-               
-          ?>
       
       
-        <li class="menu-active"><a href="profil.php" >Selamat datang, <?php echo "$_SESSION[username]"; ?></a></li>
+        <li class="menu-active"><a href="profil.php" >Selamat datang, </a></li>
         <li ><a  class="dropdown-toggle icon-cog" href="#"></a>
             <ul>
               <li><a href="profil.php">Profil</a></li>
@@ -88,17 +80,11 @@ include 'koneksi.php';
               <li><a href="logout.php">Keluar</a></li>
             </ul>
           </li>
-        <?php
-          }else{
-        ?>
         <li class="menu-has-children"><a href="">Register</a>
             <ul>
               <li><a href="login.php">Login</a></li>
               <li><a href="register.php">Daftar</a></li>
             </ul>
-  <?php
-  }
-  ?>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -109,7 +95,7 @@ include 'koneksi.php';
   ============================-->
   <section id="bantuan">
   <div class="">
-    <div class="row" style="background: url(asset/img/d-bromo2.jpg) top left no-repeat; background-size: cover; height:340px ;">
+    <div class="row" style="background: url(<?php echo base_url('asset/img/d-bromo2.jpg'); ?>) top left no-repeat; background-size: cover; height:340px ;">
         <div class="container" style="padding: 40px 20px">
             <h1 class="fg-white place-right" >Welcome to<br /> Trajekline Tour and Travel</h1>
             <h4 class="fg-white place-right">
@@ -122,30 +108,7 @@ include 'koneksi.php';
   <div class="container" id="infobantuan">
         <div class="grid fluid">
             <div class="border padding20">
-        <?php
-          if($_GET['post']=='profil'){
-            $is="Profil TRAJEKLINE Tour and Travel";
-          }else if($_GET['post']=='syarat'){
-            $is="Syarat dan Ketentuan";
-          }else if($_GET['post']=='pembayaran'){
-            $is="Cara Pembayaran";
-          }
-        ?>
-        <legend class="text-right"><h2><?php echo $is; ?></h2></legend>
-                        <?php 
-            $comot= mysqli_query($koneksi, "SELECT * FROM setup_bantuan WHERE kat_bantuan='$_GET[post]'");   
-            while($ngisi= mysqli_fetch_array($comot)){
-              if ($ngisi['judul_bantuan']!=""){ 
-            ?>          
-              <div class="span4">
-              <legend><h3><?php echo $ngisi['judul_bantuan']; ?></h3></legend>
-              </div>
-            <?php
-              }
-              echo $ngisi['konten_bantuan'];
-              echo "<br />";
-            }
-            ?>
+        <legend class="text-right"><h2></h2></legend>
             </div>
         </div>
     </div>
