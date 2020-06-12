@@ -1,4 +1,7 @@
+<body>
+
 <section id="profilCust">
+<?php  ?> <!-- Panggil database -->
 
   <div class="">
     <div class="row" style="background: url(<?php echo base_url();?>asset/img/d-bromo2.jpg) top left no-repeat; background-size: cover; height:340px ;">
@@ -10,6 +13,7 @@
         </div>
     </div>
 </div>
+
   <?php
   
   foreach($profil as $baris){

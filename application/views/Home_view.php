@@ -9,6 +9,7 @@
   <section id="home" class="masthead text-white text-center">
   <?php  ?> <!-- Panggil database -->
 
+  
     <div class="home-container">
       <h1>Trajekline</h1>
       <h2>Buat perjalan terbaikmu dengan kami</h2>
@@ -21,8 +22,15 @@
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
                   <input type="text" name="cari" class="form-control form-control-lg" placeholder="Masukkan nama tempat wisata...">
                 </div>
+
                 <div class="col-12 col-md-3">
-                  <button type="submit" class="btn btn-block btn-lg btn-primary" value="cari">Cari</button>
+                <?php 
+                 if(isset($_GET['cari'])){
+	               $cari = $_GET['cari'];
+              
+                  } ?>
+                  
+                  <a href="<?php echo base_url('index'); ?>" class="btn btn-block btn-lg btn-primary" value="cari">Cari</a>
                 </div>
               </div>
             </form>
@@ -31,6 +39,7 @@
         </div>
       </div>
     </div>
+    
   </section><!-- #home -->
 
  <!--==========================
