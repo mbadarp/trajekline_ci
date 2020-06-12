@@ -17,9 +17,58 @@ class bookingList extends CI_Controller {
         // $this->load->view('admin/_template/footer');
         $this->template_customer->views('booking_List',$data);
         
-	}
-
+        }
         
+        public function uploadBukti($id_pesan){
+                $pesan = array('id_pesan' => $id_pesan);
+                $data['paket'] = $this->bookingList_model->uploadData($pesan, 'tbl_pesan')->row();
+                $data['error'] = '';
+            $data['result'] = $this->db->order_by('id_bukti','DESC')
+                                        ->get('tbl_bukti')
+                                        ->result();
+                $this->template_customer->views('uploadBukti',$data);
+        }
+        public function getEror(){
+            $data['error'] = '';
+            $data['result'] = $this->db->order_by('id','DESC')
+                                        ->get('upload')
+                                        ->result();
+            $this->load->view('uploadBukti', $data);
+        }
+        public function Upload(){
+                  //konfigurasi
+        $config =[
+                'upload_path' => './asset/img/buktibayar/',
+                'allowed_types' => 'gif|jpg|png',
+                'filename' => uniqid(),
+                'overwrite' => true,
+                'max_size' => 1024, 
+                // 'max_width' => 1000,
+                // 'max_height' => 1000
+            ];
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('userfile'))//jika gagal upload
+            {
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('uploadBukti',$error);
+                
+            }else
+            //jika sukses upload
+            {
+                $_data = array('upload_data' => $this->upload->data());
+                $data = array(
+                   'id_pesan'=> $this->input->post('id_pesan'),
+                   'file' => $_data['upload_data']['file_name']
+                   );
+               $query = $this->db->insert('tbl_bukti',$data);
+               if($query){
+                   echo 'berhasil di upload';
+                   redirect('bookingList/index');
+               }else{
+                   echo 'gagal upload';
+               }
+            }
+    }
 
 }
 ?>

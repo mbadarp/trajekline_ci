@@ -30,7 +30,7 @@
      <a class="small" href="#">Lupa Password?</a>
  </div>
  <div class="text-center">
-    <a class="small" href="register.php">Buat Akun!</a>
+    <a class="small" href="<?php echo base_url('customer/register'); ?>">Buat Akun!</a>
   </div>
   </form>
   

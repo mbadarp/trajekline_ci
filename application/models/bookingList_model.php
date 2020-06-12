@@ -44,7 +44,22 @@ class bookingList_model extends CI_Model {
         // $query = $this->db->get();
         // return $query;
     }
+       function uploadData($where,$table){
+        return $this->db->get_where($table,$where);
+    }
 
+    function uploadGambar($data){
+        $this->db->insert('tbl_bukti', $data);
+        return true;
+    }
+    function getPesan($id_pesan = null){
+        $this->db->from('tbl_pesan');
+        if($id_pesan != null){
+            $this->db->where('pesan',$id_pesan);
+        }
+        $query = $this->db->get();
+        return $query;
+   }
     /*function get_Data($id){
         $id = $this->session->userdata('session_level');
         $this->db->select('id');

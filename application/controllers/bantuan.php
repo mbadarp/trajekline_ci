@@ -5,33 +5,39 @@ class bantuan extends CI_Controller{
         parent::__construct();
         $this->load->model('bantuan_model');
         $this->load->model('admin_model');
-        if($this->admin_model->isNotLogin()) redirect('login');
+        
     }
     
     public function profil(){
+        if($this->admin_model->isNotLogin()) redirect('login');
         $data['profil'] = $this->bantuan_model->getProfil();
          $this->template->views('crud/setup_profil', $data);
     }
 
     public function syarat(){
+        if($this->admin_model->isNotLogin()) redirect('login');
         $data['syarat'] = $this->bantuan_model->getSyarat();
          $this->template->views('crud/setup_syarat', $data);
     }
 
     public function pembayaran(){
+        if($this->admin_model->isNotLogin()) redirect('login');
         $data['pembayaran'] = $this->bantuan_model->getCbayar();
          $this->template->views('crud/setup_pembayaran', $data);
     }
     
-    public function profilview(){
+    public function profil_c(){
+        $this->load->library('template_customer');
         $data['profil'] = $this->bantuan_model->getProfil();
-        $this->template_customer->views('profil', $data);   
+        $this->template_customer->views('profil_trajek', $data);   
     }
-    public function syaratview(){
+    public function syarat_c(){
+        $this->load->library('template_customer');
         $data['syarat'] = $this->bantuan_model->getSyarat();
         $this->template_customer->views('syarat', $data);   
     }
-    public function pembayaranview(){
+    public function pembayaran_c(){
+        $this->load->library('template_customer');
         $data['pembayaran'] = $this->bantuan_model->getCbayar();
         $this->template_customer->views('pembayaran', $data);   
     }

@@ -83,33 +83,38 @@ class admin extends CI_Controller{
         $config =[
             'upload_path' => './asset/img/destinasi/',
             'allowed_types' => 'gif|jpg|png',
-            'max_size' => 1000, 'max_width' => 1000,
-            'max_height' => 1000
+            'filename' => uniqid(),
+            'overwrite' => true,
+            'max_size' => 1024, 
         ];
         $this->load->library('upload', $config);
-        //if (!$this->upload->do_upload())//jika gagal upload
-        //{
-            //$error = array('error' => $this->upload->display_errors());
-            //$this->load->view('crud/tambah_paket',$error);
+        if (!$this->upload->do_upload('foto'))//jika gagal upload
+        {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('uploadBukti',$error);
             
-        //}else
+        }else
         //jika sukses upload
-        //{
-            $file = $this->upload->data();
-            //mengambil data diform
-            $data = ['foto' => $file['file_name'],
-            'nama_paket' => set_value('nama_paket'),
-            'nama_wisata' => set_value('nama_wisata'),
-            'harga' => set_value('harga'),
-            'fasilitas' => set_value('fasilitas'),
-            'deskripsi' => set_value('deskripsi'),
-            'kategori' => set_value('kategori'),
-            'foto' => set_value('foto')
-        ];
-        $this->admin_model->input_paket($data, 'paket_tour');
-        redirect('admin/getPaket');
-
-        //}
+        {
+            $_data = array('upload_data' => $this->upload->data());
+            $data = array(
+            'nama_paket'=> $this->input->post('nama_paket'),
+            'nama_wisata'=> $this->input->post('nama_wisata'),
+            'harga'=> $this->input->post('harga'),
+            'fasilitas'=> $this->input->post('fasilitas'),
+            'deskripsi'=> $this->input->post('deskripsi'),
+            'kategori'=> $this->input->post('kategori'),
+            'foto' => $_data['upload_data']['file_name']
+            );
+            $query = $this->db->insert('paket_tour',$data);
+            if($query){
+                echo 'berhasil di upload';
+                redirect('admin/getPaket');
+            }else{
+                echo 'gagal upload';
+            }
+         }
+ 
     }
     public function tambah_paket(){
         $this->template->views('crud/tambah_paket');

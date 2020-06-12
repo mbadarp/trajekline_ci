@@ -107,9 +107,10 @@ foreach($paket as $detail){
             <!-- body -->
             <div class="modal-body">
             <?php 
-               if($this->session->userdata("session_customer")){ ?>
+               if($this->session->userdata("session_customer")){
+                 foreach($profil as $user) ?>
 
-              <form action="process-booking.php" method="POST" class="needs-validation" novalidate>
+              <form action="<?php echo base_url('home/booking');?>" method="POST" class="needs-validation" novalidate>
                 <input id="id_pesan" type="hidden" name="id_pesan">
                 <input type="hidden" name="id"  value="<?php  echo $user->id; ?>">
                 <input type="hidden" name="id_paket"  value="<?php  echo $detail->id_paket; ?>">

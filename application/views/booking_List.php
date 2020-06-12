@@ -69,7 +69,7 @@ $getUser = $this->session->set_userdata('session_level');
 									                echo "Menunggu";
 								                ?>
 									              <br/>
-                                <a class="button"  data-hint="Upload Bukti Pembayaran">Upload Bukti</a>
+                                <a class="button"  href="<?php echo base_url('bookingList/uploadBukti/'.$row->id_pesan);?>"data-hint="Upload Bukti Pembayaran">Upload Bukti</a>
 							                	<?php
 							                	}?>
                             </td> 

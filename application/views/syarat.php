@@ -1,4 +1,4 @@
-<section id="profilC">
+<section id="syarat">
 
 <div class="">
   <div class="row" style="background: url(<?php echo base_url();?>asset/img/d-bromo2.jpg) top left no-repeat; background-size: cover; height:340px ;">
@@ -16,7 +16,7 @@
          <div class="panel-heading"></div>
          <div class="panel-body  ">
          <?php 
-						foreach($profil as $ngisi){
+						foreach($syarat as $ngisi){
 						?>					
 							<div class="span4">
 							<legend><h3><?php echo $ngisi->judul_bantuan; ?></h3></legend>

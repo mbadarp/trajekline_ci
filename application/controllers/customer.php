@@ -132,7 +132,7 @@ class customer extends CI_Controller{
             'nama_belakang' => $nama_belakang,
             'email' => $email,
             'tipe_identitas' => $tipe_identitas,
-            'no_identias' => $no_identitas,
+            'no_identitas' => $no_identitas,
             'no_telepon' => $no_telepon,
             'no_rek' => $no_rek,
             'nama_rek' => $nama_rek,
