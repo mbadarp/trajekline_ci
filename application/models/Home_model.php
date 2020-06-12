@@ -21,5 +21,12 @@ class home_model extends CI_Model{
         $this->db->where($where);
         $this->db->delete($table);
     }
+    function get_detail($where,$table){
+        return $this->db->get_where($table,$where);
+            // $this->db->select('*');
+            // $this->db->from('paket_tour');
+            // $this->db->where('paket_tour.id_paket');
+            // return $this->db->get()->result();
+       }
 }
 ?>

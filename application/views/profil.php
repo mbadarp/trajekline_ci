@@ -56,7 +56,7 @@
                     </tbody>
 				</table>
 				<p class="tertiary-text-secondary"><small>nb: Silahkan lengkapi biodata ini dulu sebelum melakukan booking!!</small></p>
-				<a class="button" href="editProfil.php">Edit Profil</a>
+				<a class="button" href="<?php echo base_url('customer/edit_cust'); ?>">Edit Profil</a>
             </div>
     </div>
 

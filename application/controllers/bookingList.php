@@ -9,9 +9,9 @@ class bookingList extends CI_Controller {
         // if($this->admin_model->isNotLogin()) redirect('login');
 	}
 	public function index (){
-        $username = $this->session->userdata('username');
+        $username = $this->session->userdata('session_customer');
         $data['user']= $this->bookingList_model->getCustomer($username);
-        $data['pesanan'] = $this->bookingList_model->getAll()->result();
+        $data['pesanan'] = $this->bookingList_model->getPesanan($username)->result();
         // $this->load->view('admin/_template/head');
         // $this->load->view('form_request',$data);
         // $this->load->view('admin/_template/footer');

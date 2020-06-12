@@ -11,6 +11,19 @@ class bookingList_model extends CI_Model {
         
     }
 
+    public function getPesanan($id = null){
+        $this->db->select('*');
+        $this->db->from('login_user');
+        $this->db->join('tbl_pesan', 'login_user.id=tbl_pesan.id');
+        $this->db->join('paket_tour', 'tbl_pesan.id_paket=paket_tour.id_paket');
+        if($id != null){
+            $this->db->where('username',$id);
+        }
+        $query = $this->db->get();
+        return $query;
+        
+    }
+
     function getCustomer($username){
         $user = $this->db->get_where('login_user', ['username' => $username])->row_array();
 

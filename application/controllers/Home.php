@@ -11,7 +11,12 @@ class Home extends CI_Controller{
         $this->template_customer->views('Home_view', $data);
        
     }
-    
+    public function detail_paket($id_paket){
+        $where = array('id_paket' => $id_paket);
+       $data['paket'] = $this->Home_model->get_detail($where, 'paket_tour')->result();
+       $this->template_customer->views('detail_paket',$data);
+    //    $this->load->view('paket_detail',$data);
+    }
 }
 
 ?>

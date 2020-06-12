@@ -96,14 +96,24 @@ class customer extends CI_Controller{
     public function profil(){
         $username = $this->session->userdata('session_customer');
         // $data['user']= $this->customer_model->getUser($username);
-        $data['profil'] = $this->customer_model->getProfil(); 
+        $data['profil'] = $this->customer_model->getProfil($username)->result(); 
         $this->load->view('customer/_template/head');
         $this->load->view('customer/_template/topbar');
         $this->load->view('customer/_template/js');
         $this->load->view('profil', $data);
         $this->load->view('customer/_template/footer');
     }
-    public function edit_profil(){
+    public function edit_cust(){
+        $username = $this->session->userdata('session_customer');
+        $data['profil'] = $this->customer_model->edit_data($username)->result();
+        $this->load->view('customer/_template/head');
+        $this->load->view('customer/_template/topbar');
+        $this->load->view('customer/_template/js');
+        $this->load->view('edit_profil', $data);
+        $this->load->view('customer/_template/footer');
+       
+    }
+    public function update_profil(){
         $nama_depan = $this->input->post('nama_depan');
         $nama_belakang = $this->input->post('nama_belakang');
         $email = $this->input->post('email');
@@ -132,9 +142,13 @@ class customer extends CI_Controller{
             'level' => $level
         );
 
+        $where = array(
+            'id' => $id
+        );
 
-        $this->customer_model->input_data($data, 'login_user');
-        redirect('customer/login?pesan=berhasil');
+        $this->customer_model->update_data($where,$data,'login_user');
+        redirect('customer/profil');
+        
     }
     public function tambah(){
         //menampilkan tambah_mahasiswa
