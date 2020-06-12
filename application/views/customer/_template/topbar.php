@@ -17,7 +17,7 @@
           
             <li class="menu-has-children"><a href="">Bantuan</a>
             <ul>
-            <li><a href="aboutus.php?post=profil">Profil Trajekline</a></li>
+            <li><a href="<?php echo base_url('profil_trajekline/profil'); ?>">Profil Trajekline</a></li>
               <li><a href="aboutus.php?post=syarat">Ketentuan & Persyaratan</a></li>
               <li><a href="aboutus.php?post=pembayaran">Cara Pembayaran</a></li>
               <li><a href="#contact">Hubungi Kami</a></li>
