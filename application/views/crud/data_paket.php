@@ -70,7 +70,7 @@
                    
                  echo '<a href="'.base_url('admin/edit_paket/'.$baris->id_paket).'" class="btn btn-success btn-icon-split"><i class="fas fa-edit" style="padding: 5px;"></i></a>';
                  echo "  ";
-                echo '<a href="'.base_url('admin/hapus_paket/'.$baris->id_paket).'" class="btn btn-danger btn-icon-split"><i class="fas fa-trash" style="padding: 5px;"></i></a>';
+                echo '<a href="'.base_url('admin/delete_paket/'.$baris->id_paket).'" class="btn btn-danger btn-icon-split"><i class="fas fa-trash" style="padding: 5px;"></i></a>';
                     
             ?>
             

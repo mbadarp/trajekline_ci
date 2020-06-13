@@ -126,6 +126,52 @@ class admin extends CI_Controller{
         $data['bukti'] = $this->validasi_model->getBukti();
         $this->template->views('crud/home_admin', $data);
     }
+    public function edit_paket($id_paket){
+        
+        $data['paket'] = $this->db->get_where('paket_tour',['id_paket' => $id_paket])->result();
+        // $where = array('id_paket' => $id_paket);
+        // $data['paket'] = $this->admin_model->edit_paket($where, 'paket_tour')->result();
+        $this->template->views('crud/edit_paket',$data);
+    }
+    public function delete_paket($id_paket){
+        $_id = $this->db->get_where('paket_tour',['id_paket' => $id_paket])->row();
+        $query = $this->db->delete('paket_tour',['id_paket'=>$id_paket]);
+        if($query){
+            unlink("asset/img/destinasi/".$_id->foto);
+        }
+        redirect('admin/getPaket');
+    }
+    public function update_paket()
+        {
+            $id_paket = $this->input->post('id_paket');
+            $_image = $this->db->get_where('paket_tour',['id_paket' => $id_paket])->row();
+            $config['upload_path']          = './asset/img/destinasi/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 1024;
+            // $config['max_width']            = 0;
+            // $config['max_height']           = 0;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('foto')){
+                echo 'gagal update';
+            }
+            else{
+                $_data = array('upload_data' => $this->upload->data());
+                 $data = array(
+                    'nama_paket'=> $this->input->post('nama_paket'),
+            'nama_wisata'=> $this->input->post('nama_wisata'),
+            'harga'=> $this->input->post('harga'),
+            'fasilitas'=> $this->input->post('fasilitas'),
+            'deskripsi'=> $this->input->post('deskripsi'),
+            'kategori'=> $this->input->post('kategori'),
+            'foto' => $_data['upload_data']['file_name']
+                    );
+                $query = $this->db->update('paket_tour', $data, array('id_paket' => $id_paket));;
+                if($query){
+                    unlink("asset/img/destinasi/".$_image->foto);
+                }
+                redirect('admin/getPaket');
+            }
+        }
     
 
 

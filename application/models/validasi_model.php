@@ -23,6 +23,20 @@ class validasi_model extends CI_Model{
         $this->db->where($where);
         $this->db->delete($table);
     }
+    function getPesa(){
+        $this->db->select('*');
+        $this->db->from('tbl_pesan');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function getPesan($id_pesan = null){
+        $this->db->from('tbl_pesan');
+        if($id_pesan != null){
+            $this->db->where('tgl_pesan',$id_pesan);
+        }
+        $query = $this->db->get();
+        return $query;
+   }
 
     function getBooking(){
         $this->db->select('*');

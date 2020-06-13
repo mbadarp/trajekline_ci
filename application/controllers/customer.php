@@ -103,7 +103,7 @@ class customer extends CI_Controller{
         $this->load->view('profil', $data);
         $this->load->view('customer/_template/footer');
     }
-    public function edit_cust(){
+    public function edit_cust(){    
         $username = $this->session->userdata('session_customer');
         $data['profil'] = $this->customer_model->edit_data($username)->result();
         $this->load->view('customer/_template/head');
@@ -114,6 +114,7 @@ class customer extends CI_Controller{
        
     }
     public function update_profil(){
+        $id =  $this->input->post('id');
         $nama_depan = $this->input->post('nama_depan');
         $nama_belakang = $this->input->post('nama_belakang');
         $email = $this->input->post('email');
@@ -123,9 +124,7 @@ class customer extends CI_Controller{
         $no_rek = $this->input->post('no_rek');
         $nama_rek = $this->input->post('nama_rek');
         $alamat = $this->input->post('alamat');
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        $level = $this->input->post('level');
+        
 
         $data = array(
             'nama_depan' => $nama_depan,
@@ -137,11 +136,9 @@ class customer extends CI_Controller{
             'no_rek' => $no_rek,
             'nama_rek' => $nama_rek,
             'alamat' => $alamat,
-            'username' => $username,
-            'password' => $password,
-            'level' => $level
+           
         );
-
+        // $where = $this->session->userdata('session_customer');
         $where = array(
             'id' => $id
         );

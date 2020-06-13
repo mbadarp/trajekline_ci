@@ -64,7 +64,7 @@
                                               $salue="Kartu Pelajar";
                                           }
                                           
-                                          if($ngisi['tipe_identitas']==$value){
+                                          if($baris->tipe_identitas==$value){
                                               $sel= "selected";
                                           }else{
                                               $sel= "";

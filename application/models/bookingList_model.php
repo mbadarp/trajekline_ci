@@ -60,6 +60,16 @@ class bookingList_model extends CI_Model {
         $query = $this->db->get();
         return $query;
    }
+   function getTiket($id_pesan = null){
+       $this->db->from('tbl_pesan');
+       $this->db->join('paket_tour','paket_tour.id_paket=tbl_pesan.id_paket');
+       $this->db->join('login_user','login_user.id=tbl_pesan.id');
+       if($id_pesan != null){
+        $this->db->where($id_pesan);
+    }
+    $query = $this->db->get();
+    return $query;
+   }
     /*function get_Data($id){
         $id = $this->session->userdata('session_level');
         $this->db->select('id');

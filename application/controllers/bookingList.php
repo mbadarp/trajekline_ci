@@ -18,14 +18,13 @@ class bookingList extends CI_Controller {
         $this->template_customer->views('booking_List',$data);
         
         }
-        
         public function uploadBukti($id_pesan){
-                $pesan = array('id_pesan' => $id_pesan);
-                $data['paket'] = $this->bookingList_model->uploadData($pesan, 'tbl_pesan')->row();
-                $data['error'] = '';
+            $data['error'] = '';
             $data['result'] = $this->db->order_by('id_bukti','DESC')
                                         ->get('tbl_bukti')
                                         ->result();
+                $data['paket'] = $this->db->get_where('tbl_pesan',['id_pesan' => $id_pesan])->result();
+                
                 $this->template_customer->views('uploadBukti',$data);
         }
         public function getEror(){
@@ -36,6 +35,7 @@ class bookingList extends CI_Controller {
             $this->load->view('uploadBukti', $data);
         }
         public function Upload(){
+            
                   //konfigurasi
         $config =[
                 'upload_path' => './asset/img/buktibayar/',
@@ -69,6 +69,11 @@ class bookingList extends CI_Controller {
                }
             }
     }
-
+    public function bookingFinish($id_pesan){
+        $where = array('id_pesan' => $id_pesan);
+        $data['pesan'] = $this->bookingList_model->getTiket($where)->result();
+        $this->template_customer->views('cetak_tiket',$data);
+    }
+    
 }
 ?>

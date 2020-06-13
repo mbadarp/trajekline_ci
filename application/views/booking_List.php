@@ -59,7 +59,7 @@ $getUser = $this->session->set_userdata('session_level');
 								                  $now= date("Y-m-d");
 								                  if($row->status=='S2'&&$row->tgl_tour>=$now||$row->status=='S3'&&$row->tgl_tour>=$now){
 								                ?>
-                                  <a class="button" href="bookingFinish.php?id=<?php echo $row[0]; ?>" data-hint="<?php echo $txtS ?>">Cetak Tiket</a>
+                                  <a class="button" href="<?php echo base_url('bookingList/bookingFinish/'.$row->id_pesan);?>" data-hint="">Cetak Tiket</a>
 								                <?php
 								                } else if($row->status=='S4'){
 									                echo "Telah Tour";
