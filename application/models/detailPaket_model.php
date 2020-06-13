@@ -1,5 +1,5 @@
 <?php
-class detailPaket_model extends CI_Model{
+class DetailPaket_model extends CI_Model{
     function getAll(){
         $this->db->select('*');
         $this->db->from('paket_tour');

@@ -1,5 +1,5 @@
 <?php
-class bookingList_model extends CI_Model {
+class BookingList_model extends CI_Model {
     public function getAll(){
         $this->db->select('*');
         $this->db->from('login_user');

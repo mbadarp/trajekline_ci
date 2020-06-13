@@ -1,61 +1,61 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class bantuan extends CI_Controller{
+class Bantuan extends CI_Controller{
     function __construct(){
         parent::__construct();
-        $this->load->model('bantuan_model');
-        $this->load->model('admin_model');
+        $this->load->model('Bantuan_model');
+        $this->load->model('Admin_model');
         
     }
     
     public function profil(){
-        if($this->admin_model->isNotLogin()) redirect('login');
-        $data['profil'] = $this->bantuan_model->getProfil();
+        if($this->Admin_model->isNotLogin()) redirect('login');
+        $data['profil'] = $this->Bantuan_model->getProfil();
          $this->template->views('crud/setup_profil', $data);
     }
 
     public function syarat(){
-        if($this->admin_model->isNotLogin()) redirect('login');
-        $data['syarat'] = $this->bantuan_model->getSyarat();
+        if($this->Admin_model->isNotLogin()) redirect('login');
+        $data['syarat'] = $this->Bantuan_model->getSyarat();
          $this->template->views('crud/setup_syarat', $data);
     }
 
     public function pembayaran(){
-        if($this->admin_model->isNotLogin()) redirect('login');
-        $data['pembayaran'] = $this->bantuan_model->getCbayar();
+        if($this->Admin_model->isNotLogin()) redirect('login');
+        $data['pembayaran'] = $this->Bantuan_model->getCbayar();
          $this->template->views('crud/setup_pembayaran', $data);
     }
     
     public function profil_c(){
         $this->load->library('template_customer');
-        $data['profil'] = $this->bantuan_model->getProfil();
+        $data['profil'] = $this->Bantuan_model->getProfil();
         $this->template_customer->views('profil_trajek', $data);   
     }
     public function syarat_c(){
         $this->load->library('template_customer');
-        $data['syarat'] = $this->bantuan_model->getSyarat();
+        $data['syarat'] = $this->Bantuan_model->getSyarat();
         $this->template_customer->views('syarat', $data);   
     }
     public function pembayaran_c(){
         $this->load->library('template_customer');
-        $data['pembayaran'] = $this->bantuan_model->getCbayar();
+        $data['pembayaran'] = $this->Bantuan_model->getCbayar();
         $this->template_customer->views('pembayaran', $data);   
     }
     public function hapusprofil($id_bantuan){
         $where = array('id_bantuan' => $id_bantuan);
-        $this->bantuan_model->hapus_data($where,'setup_bantuan');
+        $this->Bantuan_model->hapus_data($where,'setup_bantuan');
         redirect('bantuan/profil');
     }
 
     public function hapussyarat($id_bantuan){
         $where = array('id_bantuan' => $id_bantuan);
-        $this->bantuan_model->hapus_data($where,'setup_bantuan');
+        $this->Bantuan_model->hapus_data($where,'setup_bantuan');
         redirect('bantuan/syarat');
     }
 
     public function hapuspembayaran($id_bantuan){
         $where = array('id_bantuan' => $id_bantuan);
-        $this->bantuan_model->hapus_data($where,'setup_bantuan');
+        $this->Bantuan_model->hapus_data($where,'setup_bantuan');
         redirect('bantuan/pembayaran');
     }
     
@@ -70,13 +70,13 @@ class bantuan extends CI_Controller{
             'konten_bantuan' => $konten_bantuan,
         );
 
-        $this->bantuan_model->input_data($data, 'setup_bantuan');
+        $this->Bantuan_model->input_data($data, 'setup_bantuan');
         redirect('bantuan/profil');
     }
 
     public function edit_profil($id_bantuan){
         $where = array('id_bantuan' => $id_bantuan);
-        $data['profil'] = $this->bantuan_model->edit_data($where, 'setup_bantuan')->result();
+        $data['profil'] = $this->Bantuan_model->edit_data($where, 'setup_bantuan')->result();
         $this->template->views('crud/edit_profil',$data);
     }
 
@@ -96,7 +96,7 @@ class bantuan extends CI_Controller{
             'id_bantuan' => $id_bantuan
         );
 
-        $this->bantuan_model->update_data($where,$data,'setup_bantuan');
+        $this->Bantuan_model->update_data($where,$data,'setup_bantuan');
         redirect('bantuan/profil');
     }
     public function tambah_profil(){
@@ -115,13 +115,13 @@ class bantuan extends CI_Controller{
             'konten_bantuan' => $konten_bantuan,
         );
 
-        $this->bantuan_model->input_data($data, 'setup_bantuan');
+        $this->Bantuan_model->input_data($data, 'setup_bantuan');
         redirect('bantuan/syarat');
     }
 
     public function edit_syarat($id_bantuan){
         $where = array('id_bantuan' => $id_bantuan);
-        $data['syarat'] = $this->bantuan_model->edit_data($where, 'setup_bantuan')->result();
+        $data['syarat'] = $this->Bantuan_model->edit_data($where, 'setup_bantuan')->result();
         $this->template->views('crud/edit_syarat',$data);
     }
 
@@ -141,7 +141,7 @@ class bantuan extends CI_Controller{
             'id_bantuan' => $id_bantuan
         );
 
-        $this->bantuan_model->update_data($where,$data,'setup_bantuan');
+        $this->Bantuan_model->update_data($where,$data,'setup_bantuan');
         redirect('bantuan/syarat');
     }
     public function tambah_syarat(){
@@ -160,13 +160,13 @@ class bantuan extends CI_Controller{
             'konten_bantuan' => $konten_bantuan,
         );
 
-        $this->bantuan_model->input_data($data, 'setup_bantuan');
+        $this->Bantuan_model->input_data($data, 'setup_bantuan');
         redirect('bantuan/pembayaran');
     }
 
     public function edit_cbayar($id_bantuan){
         $where = array('id_bantuan' => $id_bantuan);
-        $data['pembayaran'] = $this->bantuan_model->edit_data($where, 'setup_bantuan')->result();
+        $data['pembayaran'] = $this->Bantuan_model->edit_data($where, 'setup_bantuan')->result();
         $this->template->views('crud/edit_pembayaran',$data);
     }
 
@@ -186,7 +186,7 @@ class bantuan extends CI_Controller{
             'id_bantuan' => $id_bantuan
         );
 
-        $this->bantuan_model->update_data($where,$data,'setup_bantuan');
+        $this->Bantuan_model->update_data($where,$data,'setup_bantuan');
         redirect('bantuan/pembayaran');
     }
     public function tambah_cbayar(){

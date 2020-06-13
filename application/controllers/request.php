@@ -1,15 +1,15 @@
 <?php
-class request extends CI_Controller {
+class Request extends CI_Controller {
 	
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('request_model');
+		$this->load->model('Request_model');
         $this->load->library('template_customer');
         // $this->load->model('admin_model');
         // if($this->admin_model->isNotLogin()) redirect('login');
 	}
 	public function index (){
-        $data['request'] = $this->request_model->getAll()->result();
+        $data['request'] = $this->Request_model->getAll()->result();
         // $this->load->view('admin/_template/head');
         // $this->load->view('form_request',$data);
         // $this->load->view('admin/_template/footer');
@@ -17,7 +17,7 @@ class request extends CI_Controller {
         
 	}
 	public function dtrequest(){
-		$data['request'] = $this->request_model->getAll()->result();
+		$data['request'] = $this->Request_model->getAll()->result();
 		$this->template->views('crud/data_request',$data);
 	}
 	//public function tambah(){
@@ -49,17 +49,17 @@ class request extends CI_Controller {
                 'fasilitas' => $fasilitas,
                
 		);
-		$this->request_model->input_data($data,'data_request');
+		$this->Request_model->input_data($data,'data_request');
 		redirect('request');
 	}
 	public function hapus($id_request){
 		$where = array('id_request' => $id_request);
-        $this->request_model->hapus_data($where,'data_request');
+        $this->Request_model->hapus_data($where,'data_request');
         redirect('request/dtrequest');
 	}
 	public function edit($id_request){
         $where = array('id_request' => $id_request);
-        $data['request'] = $this->request_model->edit_data($where, 'data_request')->result();
+        $data['request'] = $this->Request_model->edit_data($where, 'data_request')->result();
         $this->template->views('crud/edit_request',$data);
 	}
 	public function update(){
@@ -94,7 +94,7 @@ class request extends CI_Controller {
             'id_request' => $id_request
         );
 
-        $this->request_model->update_data($where,$data,'data_request');
+        $this->Request_model->update_data($where,$data,'data_request');
         redirect('request/dtrequest');
     }
 

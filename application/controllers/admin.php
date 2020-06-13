@@ -1,27 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class admin extends CI_Controller{
+class Admin extends CI_Controller{
     function __construct(){
         parent::__construct();
-        $this->load->model('admin_model');
-        if($this->admin_model->isNotLogin()) redirect('login');
+        $this->load->model('Admin_model');
+        if($this->Admin_model->isNotLogin()) redirect('login');
     }
     
     public function index(){
         // if($this->session->userdata('status') != "login"){
         //     redirect(base_url('admin/login_admin'));
         // }
-        $data['user'] = $this->admin_model->getAll()->result();
+        $data['user'] = $this->Admin_model->getAll()->result();
          $this->template->views('crud/data_admin', $data);
     }
     public function edit($id_admin){
         $where = array('id_admin' => $id_admin);
-        $data['user'] = $this->admin_model->edit_data($where, 'login_admin')->result();
+        $data['user'] = $this->Admin_model->edit_data($where, 'login_admin')->result();
         $this->template->views('crud/edit_admin',$data);
     }
     public function hapus($id_admin){
         $where = array('id_admin' => $id_admin);
-        $this->admin_model->hapus_data($where,'login_admin');
+        $this->Admin_model->hapus_data($where,'login_admin');
         redirect('admin/index');
     }
     
@@ -45,7 +45,7 @@ class admin extends CI_Controller{
             'id_admin' => $id_admin
         );
 
-        $this->admin_model->update_data($where,$data,'login_admin');
+        $this->Admin_model->update_data($where,$data,'login_admin');
         redirect('admin');
     }
     public function input(){
@@ -63,7 +63,7 @@ class admin extends CI_Controller{
             'level' => $level
         );
 
-        $this->admin_model->input_data($data, 'login_admin');
+        $this->Admin_model->input_data($data, 'login_admin');
         redirect('admin/index');
     }
     public function tambah(){
@@ -73,8 +73,8 @@ class admin extends CI_Controller{
 
     //PAKET TOUR
     public function getPaket(){
-        $this->load->model('admin_model');
-        $data['paket'] = $this->admin_model->getPaketById()->result();
+        $this->load->model('Admin_model');
+        $data['paket'] = $this->Admin_model->getPaketById()->result();
          $this->template->views('crud/data_paket', $data);
     }
     
@@ -130,7 +130,7 @@ class admin extends CI_Controller{
         
         $data['paket'] = $this->db->get_where('paket_tour',['id_paket' => $id_paket])->result();
         // $where = array('id_paket' => $id_paket);
-        // $data['paket'] = $this->admin_model->edit_paket($where, 'paket_tour')->result();
+        // $data['paket'] = $this->Admin_model->edit_paket($where, 'paket_tour')->result();
         $this->template->views('crud/edit_paket',$data);
     }
     public function delete_paket($id_paket){

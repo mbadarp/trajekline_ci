@@ -1,5 +1,5 @@
 <?php
-class validasi_model extends CI_Model{
+class Validasi_model extends CI_Model{
     function getAll(){
         $this->db->select('*');
         $this->db->from('tbl_pesan');

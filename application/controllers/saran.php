@@ -1,21 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class saran extends CI_Controller{
+class Saran extends CI_Controller{
     function __construct(){
         parent::__construct();
-        $this->load->model('saran_model');
+        $this->load->model('Saran_model');
        
     }
     
     public function index(){
-        $this->load->model('admin_model');
-        if($this->admin_model->isNotLogin()) redirect('login');
-        $data['saran'] = $this->saran_model->getAll()->result();
+        $this->load->model('Admin_model');
+        if($this->Admin_model->isNotLogin()) redirect('login');
+        $data['saran'] = $this->Saran_model->getAll()->result();
          $this->template->views('crud/data_saran', $data);
     }
     public function hapus($id_saran){
         $where = array('id_saran' => $id_saran);
-        $this->saran_model->hapus_data($where,'tbl_saran');
+        $this->Saran_model->hapus_data($where,'tbl_saran');
         redirect('saran/index');
     }
     
@@ -32,7 +32,7 @@ class saran extends CI_Controller{
             'saran_masukan' => $saran_masukan,
         );
 
-        $this->saran_model->input_data($data, 'tbl_saran');
+        $this->Saran_model->input_data($data, 'tbl_saran');
         redirect('home/index/#contact');
     }
     public function tambah(){

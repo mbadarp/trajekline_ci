@@ -1,5 +1,5 @@
 <?php
-class request_model extends CI_Model{
+class Request_model extends CI_Model{
     function getAll(){
         $this->db->select('*');
         $this->db->from('data_request');

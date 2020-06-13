@@ -1,17 +1,17 @@
 <?php
-class bookingList extends CI_Controller {
+class BookingList extends CI_Controller {
 	
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('bookingList_model');
+		$this->load->model('BookingList_model');
         $this->load->library('template_customer');
         // $this->load->model('admin_model');
         // if($this->admin_model->isNotLogin()) redirect('login');
 	}
 	public function index (){
         $username = $this->session->userdata('session_customer');
-        $data['user']= $this->bookingList_model->getCustomer($username);
-        $data['pesanan'] = $this->bookingList_model->getPesanan($username)->result();
+        $data['user']= $this->BookingList_model->getCustomer($username);
+        $data['pesanan'] = $this->BookingList_model->getPesanan($username)->result();
         // $this->load->view('admin/_template/head');
         // $this->load->view('form_request',$data);
         // $this->load->view('admin/_template/footer');
@@ -71,7 +71,7 @@ class bookingList extends CI_Controller {
     }
     public function bookingFinish($id_pesan){
         $where = array('id_pesan' => $id_pesan);
-        $data['pesan'] = $this->bookingList_model->getTiket($where)->result();
+        $data['pesan'] = $this->BookingList_model->getTiket($where)->result();
         $this->template_customer->views('cetak_tiket',$data);
     }
     

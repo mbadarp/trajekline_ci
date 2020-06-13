@@ -1,15 +1,15 @@
 <?php
-class detailPaket extends CI_Controller {
+class DetailPaket extends CI_Controller {
 	
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('detailPaket_model');
+		$this->load->model('DetailPaket_model');
         $this->load->library('template_customer');
         // $this->load->model('admin_model');
         // if($this->admin_model->isNotLogin()) redirect('login');
 	}
 	public function index (){
-        $data['request'] = $this->detailPaket_model->getAll()->result();
+        $data['request'] = $this->DetailPaket_model->getAll()->result();
         
         $this->template_customer->views('detail_paket',$data);
         
@@ -28,7 +28,7 @@ class detailPaket extends CI_Controller {
                 'tgl_tour' => $tgl_tour,
                
 		);
-		$this->detailPaket_model->input_data($data,'tbl_pesan');
+		$this->DetailPaket_model->input_data($data,'tbl_pesan');
 		redirect('detailPaket');
 	}
 	

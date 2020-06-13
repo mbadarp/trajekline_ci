@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller{
     function __construct(){
         parent::__construct();
-        $this->load->model('admin_model');
+        $this->load->model('Admin_model');
     }
     
     public function index(){
@@ -15,7 +15,7 @@ class Login extends CI_Controller{
     public function cek_log(){
         $user_admin = $this->input->post('txt_user');
         $password = $this->input->post('txt_pass');
-        $cek = $this->admin_model->login($user_admin,$password,'login_admin')->result();
+        $cek = $this->Admin_model->login($user_admin,$password,'login_admin')->result();
         if($cek != FALSE){
             foreach ($cek as $row){
                 $user = $row->user_admin;

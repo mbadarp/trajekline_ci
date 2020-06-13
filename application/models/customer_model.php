@@ -1,5 +1,5 @@
 <?php
-class customer_model extends CI_Model{
+class Customer_model extends CI_Model{
     function getAll(){
         $this->db->select('*');
         $this->db->from('login_user');

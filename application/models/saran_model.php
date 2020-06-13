@@ -1,5 +1,5 @@
 <?php
-class saran_model extends CI_Model{
+class Saran_model extends CI_Model{
     function getAll(){
         $this->db->select('*');
         $this->db->from('tbl_saran');

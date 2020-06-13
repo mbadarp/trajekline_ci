@@ -1,26 +1,26 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class customer extends CI_Controller{
+class Customer extends CI_Controller{
     function __construct(){
         parent::__construct();
-        $this->load->model('customer_model');
-        $this->load->model('admin_model');
+        $this->load->model('Customer_model');
+        $this->load->model('Admin_model');
         
     }
     
     public function index(){
-        if($this->admin_model->isNotLogin()) redirect('login');
-        $data['user'] = $this->customer_model->getAll()->result();
+        if($this->Admin_model->isNotLogin()) redirect('login');
+        $data['user'] = $this->Customer_model->getAll()->result();
          $this->template->views('crud/data_customer', $data);
     }
     public function edit($id){
         $where = array('id' => $id);
-        $data['user'] = $this->customer_model->edit_data($where, 'login_user')->result();
+        $data['user'] = $this->Customer_model->edit_data($where, 'login_user')->result();
         $this->template->views('crud/edit_customer',$data);
     }
     public function hapus($id){
         $where = array('id' => $id);
-        $this->customer_model->hapus_data($where,'login_user');
+        $this->Customer_model->hapus_data($where,'login_user');
         redirect('customer/index');
     }
     
@@ -58,7 +58,7 @@ class customer extends CI_Controller{
             'id' => $id
         );
 
-        $this->customer_model->update_data($where,$data,'login_user');
+        $this->Customer_model->update_data($where,$data,'login_user');
         redirect('customer');
     }
     public function register(){
@@ -90,13 +90,13 @@ class customer extends CI_Controller{
         );
 
 
-        $this->customer_model->input_data($data, 'login_user');
+        $this->Customer_model->input_data($data, 'login_user');
         redirect('customer/login?pesan=berhasil');
     }
     public function profil(){
         $username = $this->session->userdata('session_customer');
-        // $data['user']= $this->customer_model->getUser($username);
-        $data['profil'] = $this->customer_model->getProfil($username)->result(); 
+        // $data['user']= $this->Customer_model->getUser($username);
+        $data['profil'] = $this->Customer_model->getProfil($username)->result(); 
         $this->load->view('customer/_template/head');
         $this->load->view('customer/_template/topbar');
         $this->load->view('customer/_template/js');
@@ -105,7 +105,7 @@ class customer extends CI_Controller{
     }
     public function edit_cust(){    
         $username = $this->session->userdata('session_customer');
-        $data['profil'] = $this->customer_model->edit_data($username)->result();
+        $data['profil'] = $this->Customer_model->edit_data($username)->result();
         $this->load->view('customer/_template/head');
         $this->load->view('customer/_template/topbar');
         $this->load->view('customer/_template/js');
@@ -143,7 +143,7 @@ class customer extends CI_Controller{
             'id' => $id
         );
 
-        $this->customer_model->update_data($where,$data,'login_user');
+        $this->Customer_model->update_data($where,$data,'login_user');
         redirect('customer/profil');
         
     }
@@ -164,7 +164,7 @@ class customer extends CI_Controller{
     public function cek_log(){
         $username = $this->input->post('txt_user');
         $password = $this->input->post('txt_pass');
-        $cek = $this->customer_model->login($username,$password,'login_user')->result();
+        $cek = $this->Customer_model->login($username,$password,'login_user')->result();
         if($cek != FALSE){
             foreach ($cek as $row){
                 $user = $row->username;

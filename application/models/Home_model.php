@@ -1,5 +1,5 @@
 <?php
-class home_model extends CI_Model{
+class Home_model extends CI_Model{
     function getAll(){
         $this->db->select('*');
         $this->db->from('paket_tour');

@@ -1,5 +1,5 @@
 <?php
-class bantuan_model extends CI_Model{
+class Bantuan_model extends CI_Model{
     function getAll(){
         $this->db->select('*');
         $this->db->from('setup_bantuan');
