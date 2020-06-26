@@ -7,7 +7,15 @@ class BookingList extends CI_Controller {
         $this->load->library('template_customer');
         // $this->load->model('admin_model');
         // if($this->admin_model->isNotLogin()) redirect('login');
+    }
+    
+    public function Api(){
+		$username = $this->session->userdata('session_customer');
+        $data = $this->BookingList_model->getCustomer($username);
+        $data = $this->BookingList_model->getPesanan($username)->result();
+		echo json_encode($data->result_array());
 	}
+
 	public function index (){
         $username = $this->session->userdata('session_customer');
         $data['user']= $this->BookingList_model->getCustomer($username);
