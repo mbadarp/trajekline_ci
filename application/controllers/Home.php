@@ -36,7 +36,35 @@ class Home extends CI_Controller{
         $this->Home_model->input_data($data, 'tbl_pesan');
         redirect('bookingList/index');
     }
-    
+    //API
+    public function ApiPaket(){
+		$data = $this->Home_model->getAll();
+		echo json_encode($data->result_array());
+    }
+    public function ApiDetailPaket(){
+        $this->load->model('customer_model');
+        $where = array('id_paket' => $id_paket);
+        $username = $this->session->userdata('session_customer');
+        $data['profil'] = $this->customer_model->getProfil($username)->result();
+       $data['paket'] = $this->Home_model->get_detail($where, 'paket_tour')->result();
+       echo json_encode($data->result_array());
+    }
+    public function ApiBooking(){
+        $id = $this->input->post('id');
+        $id_paket = $this->input->post('id_paket');
+        $tgl_pesan = $this->input->post('tgl_pesan');
+        $tgl_tour = $this->input->post('tgl_tour');
+
+        $data = array(
+            'id'=> $id,
+            'id_paket' => $id_paket,
+            'tgl_pesan' => $tgl_pesan,
+            'tgl_tour' => $tgl_tour,
+            'status' => 'S1'
+        );
+        $this->Home_model->input_data($data, 'tbl_pesan');
+		echo json_encode($array);
+	}
 }
 
 ?>

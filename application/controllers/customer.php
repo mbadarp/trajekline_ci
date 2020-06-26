@@ -183,11 +183,61 @@ class Customer extends CI_Controller{
            
         }
     }
-
     public function logout(){
         $this->session->sess_destroy();
         redirect(base_url('home'));
     }
+
+    //APi
+
+    public function ApiRegister(){
+		$nama_depan = $this->input->post('nama_depan');
+		$nama_belakang = $this->input->post('nama_belakang');
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$data = array(
+			'nama_depan' => $nama_depan,
+			'nama_belakang' => $nama_belakang,
+			'email' => $email,
+			'password' => $password
+		);
+		$this->customer_model->input_data($data, 'login_user');
+		echo json_encode($array);
+    }
+    public function ApiUpdateProfil(){
+        $id =  $this->input->post('id');
+        $nama_depan = $this->input->post('nama_depan');
+        $nama_belakang = $this->input->post('nama_belakang');
+        $email = $this->input->post('email');
+        $tipe_identitas = $this->input->post('tipe_identitas');
+        $no_identitas = $this->input->post('no_identitas');
+        $no_telepon = $this->input->post('no_telepon');
+        $no_rek = $this->input->post('no_rek');
+        $nama_rek = $this->input->post('nama_rek');
+        $alamat = $this->input->post('alamat');
+
+		
+        $data = array(
+            'nama_depan' => $nama_depan,
+            'nama_belakang' => $nama_belakang,
+            'email' => $email,
+            'tipe_identitas' => $tipe_identitas,
+            'no_identitas' => $no_identitas,
+            'no_telepon' => $no_telepon,
+            'no_rek' => $no_rek,
+            'nama_rek' => $nama_rek,
+            'alamat' => $alamat,
+           
+        );
+        // $where = $this->session->userdata('session_customer');
+        $where = array(
+            'id' => $id
+        );
+		$this->customer_model->update_data($where,$data, 'login_user');
+		echo json_encode($array);
+	}
+
+    
 
 
 }

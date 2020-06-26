@@ -74,6 +74,12 @@ class BookingList extends CI_Controller {
         $data['pesan'] = $this->BookingList_model->getTiket($where)->result();
         $this->template_customer->views('cetak_tiket',$data);
     }
-    
+    //API
+    public function ApiBookingList(){
+        $username = $this->session->userdata('session_customer');
+        $data['user']= $this->BookingList_model->getCustomer($username);
+        $data = $this->BookingList_model->getPesanan($username)->result();
+        echo json_encode($data);
+    }
 }
 ?>

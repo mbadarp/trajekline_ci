@@ -1,0 +1,7 @@
+1. Paket Tour -> trajekline_ci/home/ApiPaket
+2. Detail Paket > trajekline_ci/home/ApiDetailPaket
+3 Booking -> trajekline_ci/home/ApiBooking
+4. Register ->  trajekline_ci/customer/ApiRegister
+5. Update Profil -> trajekline_ci/customer/ApiUpdateProfil
+6. Request(BuatPaket) -> trajekline_ci/request/ApiRequest
+7. BookingList -> trajekline_ci/bookinglist/ApiBookingList
